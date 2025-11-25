@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { themes } from "../utils/themes";
 
   let angle = 0;
   let dragging = false;
@@ -79,13 +80,7 @@
     targetVisible = !targetVisible;
   }
 
-  const themes = [
-    { left: "Bad super power", right: "Amazing super power" },
-    { left: "Introvert", right: "Extremely sociable" },
-    { left: "Very bad movie", right: "Absolute masterpiece" },
-    { left: "Very healthy", right: "Extremely fatty" },
-    { left: "Cute animal", right: "Nightmarish animal" },
-  ];
+  
   let currentTheme = themes[0];
 
   function setRandomTheme() {
@@ -118,7 +113,7 @@
   on:touchend={stopDrag}
 >
   <button on:click={toggleDarkMode}>
-    {darkMode ? "Mode clair" : "Mode nuit"}
+    {darkMode ? "Light mode" : "Dark mode"}
   </button>
 
   <h2>Wavelength</h2>
@@ -156,8 +151,6 @@
   </button>
   <button on:click={setRandomTheme}>Change theme</button>
 
-  <p>Needle: {Math.round(angle)}°</p>
-  <p>TargetAngle: {Math.round(targetAngle)}°</p>
 </div>
 
 <style>
@@ -289,10 +282,8 @@
     opacity: 0.9;
   }
 
+  /* --- DARK MODE TRANSITION --- */
   :global(body) {
-    transition:
-      background 0.4s ease,
-      color 0.4s ease;
     background: #f0f0f0;
     color: #111;
   }
