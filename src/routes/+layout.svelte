@@ -1,33 +1,25 @@
 <script lang="ts">
-	import Header from './Header.svelte';
-	import '../app.css';
-
-	let { children } = $props();
+  import Header from "../lib/components/Header.svelte";
 </script>
 
-<div class="app">
+<Header />
 
-	<main>
-		{@render children()}
-	</main>
-
-</div>
+<slot />
 
 <style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
+  :global(body) {
+    margin: 0;
+    font-family: "Poppins", system-ui, sans-serif;
+    background: #f7f7fb;
+    color: #111;
+  }
 
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
+  /* espace entre header et contenu */
+  :global(main),
+  :global(.home),
+  :global(.container) {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 20px;
+  }
 </style>
